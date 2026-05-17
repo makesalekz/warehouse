@@ -118,6 +118,24 @@ func (m *mockWarehousesRepo) Count(_ context.Context, tenantID int64) (int32, er
 	return count, nil
 }
 
+func (m *mockWarehousesRepo) FindHallByTenant(_ context.Context, tenantID int64) (*ent.Warehouse, error) {
+	for _, w := range m.warehouses {
+		if w.TenantID == tenantID && w.Type == enum.Hall && w.IsActive {
+			return w, nil
+		}
+	}
+	return nil, fmt.Errorf("no active HALL warehouse for tenant %d", tenantID)
+}
+
+func (m *mockWarehousesRepo) FindMainByTenant(_ context.Context, tenantID int64) (*ent.Warehouse, error) {
+	for _, w := range m.warehouses {
+		if w.TenantID == tenantID && w.Type == enum.Main && w.IsActive {
+			return w, nil
+		}
+	}
+	return nil, fmt.Errorf("no active MAIN warehouse for tenant %d", tenantID)
+}
+
 // --- Mock StockItemsRepo ---
 
 type mockStockItemsRepo struct {
@@ -238,6 +256,50 @@ func (m *mockStockItemsRepo) GetByWarehouseAndProduct(_ context.Context, tenantI
 		}
 	}
 	return nil, errNotFound
+}
+
+func (m *mockStockItemsRepo) DecrementQuantity(_ context.Context, tenantID, warehouseID, productID int64, qty decimal.Decimal) error {
+	for _, item := range m.items {
+		if item.TenantID == tenantID && item.WarehouseID == warehouseID && item.ProductID == productID {
+			item.Quantity = item.Quantity.Sub(qty)
+			return nil
+		}
+	}
+	// Create with negative qty if not exists
+	s := &ent.StockItem{
+		ID:          m.nextID,
+		TenantID:    tenantID,
+		WarehouseID: warehouseID,
+		ProductID:   productID,
+		Quantity:    qty.Neg(),
+		CreatedAt:   time.Now(),
+		UpdatedAt:   time.Now(),
+	}
+	m.items[m.nextID] = s
+	m.nextID++
+	return nil
+}
+
+func (m *mockStockItemsRepo) IncrementQuantity(_ context.Context, tenantID, warehouseID, productID int64, qty decimal.Decimal) error {
+	for _, item := range m.items {
+		if item.TenantID == tenantID && item.WarehouseID == warehouseID && item.ProductID == productID {
+			item.Quantity = item.Quantity.Add(qty)
+			return nil
+		}
+	}
+	// Create if not exists
+	s := &ent.StockItem{
+		ID:          m.nextID,
+		TenantID:    tenantID,
+		WarehouseID: warehouseID,
+		ProductID:   productID,
+		Quantity:    qty,
+		CreatedAt:   time.Now(),
+		UpdatedAt:   time.Now(),
+	}
+	m.items[m.nextID] = s
+	m.nextID++
+	return nil
 }
 
 // --- Mock StockMovementsRepo ---

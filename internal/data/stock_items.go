@@ -18,6 +18,8 @@ type StockItemsRepo interface {
 	SetMinQuantity(ctx context.Context, tenantID, warehouseID, productID int64, minQty decimal.Decimal) (*ent.StockItem, error)
 	ListLowStock(ctx context.Context, tenantID, warehouseID int64) ([]*ent.StockItem, error)
 	GetByWarehouseAndProduct(ctx context.Context, tenantID, warehouseID, productID int64) (*ent.StockItem, error)
+	DecrementQuantity(ctx context.Context, tenantID, warehouseID, productID int64, qty decimal.Decimal) error
+	IncrementQuantity(ctx context.Context, tenantID, warehouseID, productID int64, qty decimal.Decimal) error
 }
 
 type stockItemsRepo struct {
@@ -111,4 +113,27 @@ func (r *stockItemsRepo) GetByWarehouseAndProduct(ctx context.Context, tenantID,
 			stockitem.ProductID(productID),
 		).
 		Only(ctx)
+}
+
+func (r *stockItemsRepo) DecrementQuantity(ctx context.Context, tenantID, warehouseID, productID int64, qty decimal.Decimal) error {
+	// Upsert: if stock item doesn't exist, create with negative qty; if exists, subtract.
+	return r.db.StockItem.Create().
+		SetTenantID(tenantID).
+		SetWarehouseID(warehouseID).
+		SetProductID(productID).
+		SetQuantity(qty.Neg()).
+		OnConflictColumns(stockitem.FieldTenantID, stockitem.FieldWarehouseID, stockitem.FieldProductID).
+		AddQuantity(qty.Neg()).
+		Exec(ctx)
+}
+
+func (r *stockItemsRepo) IncrementQuantity(ctx context.Context, tenantID, warehouseID, productID int64, qty decimal.Decimal) error {
+	return r.db.StockItem.Create().
+		SetTenantID(tenantID).
+		SetWarehouseID(warehouseID).
+		SetProductID(productID).
+		SetQuantity(qty).
+		OnConflictColumns(stockitem.FieldTenantID, stockitem.FieldWarehouseID, stockitem.FieldProductID).
+		AddQuantity(qty).
+		Exec(ctx)
 }

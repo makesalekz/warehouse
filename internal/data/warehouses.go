@@ -2,8 +2,10 @@ package data
 
 import (
 	"context"
+	"fmt"
 
 	"gitlab.calendaria.team/services/warehouse/ent"
+	"gitlab.calendaria.team/services/warehouse/ent/enum"
 	"gitlab.calendaria.team/services/warehouse/ent/warehouse"
 	utils_v1 "gitlab.calendaria.team/services/utils/api/utils/v1"
 )
@@ -15,6 +17,8 @@ type WarehousesRepo interface {
 	Update(ctx context.Context, dto WarehouseDto) (*ent.Warehouse, error)
 	Delete(ctx context.Context, tenantID, id int64) error
 	Count(ctx context.Context, tenantID int64) (int32, error)
+	FindHallByTenant(ctx context.Context, tenantID int64) (*ent.Warehouse, error)
+	FindMainByTenant(ctx context.Context, tenantID int64) (*ent.Warehouse, error)
 }
 
 type warehousesRepo struct {
@@ -92,4 +96,38 @@ func (r *warehousesRepo) Count(ctx context.Context, tenantID int64) (int32, erro
 		Where(warehouse.TenantID(tenantID)).
 		Count(ctx)
 	return int32(count), err
+}
+
+// FindHallByTenant returns the first active HALL warehouse for the given tenant.
+// MVP: assumes one HALL warehouse per tenant.
+func (r *warehousesRepo) FindHallByTenant(ctx context.Context, tenantID int64) (*ent.Warehouse, error) {
+	w, err := r.db.Warehouse.Query().
+		Where(
+			warehouse.TenantID(tenantID),
+			warehouse.TypeEQ(enum.Hall),
+			warehouse.IsActive(true),
+		).
+		Order(ent.Asc(warehouse.FieldID)).
+		First(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("no active HALL warehouse found for tenant %d: %w", tenantID, err)
+	}
+	return w, nil
+}
+
+// FindMainByTenant returns the first active MAIN warehouse for the given tenant.
+// MVP: assumes one MAIN warehouse per tenant.
+func (r *warehousesRepo) FindMainByTenant(ctx context.Context, tenantID int64) (*ent.Warehouse, error) {
+	w, err := r.db.Warehouse.Query().
+		Where(
+			warehouse.TenantID(tenantID),
+			warehouse.TypeEQ(enum.Main),
+			warehouse.IsActive(true),
+		).
+		Order(ent.Asc(warehouse.FieldID)).
+		First(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("no active MAIN warehouse found for tenant %d: %w", tenantID, err)
+	}
+	return w, nil
 }

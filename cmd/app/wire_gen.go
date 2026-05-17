@@ -38,10 +38,20 @@ func wireApp(bootstrap *conf.Bootstrap, logger log.Logger) (*kratos.App, func(),
 	}
 	lowStockPublisher := data.NewLowStockPublisher(conn, logger)
 	warehouseUsecase := biz.NewWarehouseUsecase(logger, warehousesRepo, stockItemsRepo, stockMovementsRepo, inventoriesRepo, lowStockPublisher)
+
+	// Start NATS consumer for sales and order events
+	_, consumerCleanup, err := biz.NewConsumer(conn, warehouseUsecase, logger)
+	if err != nil {
+		cleanup2()
+		cleanup()
+		return nil, nil, err
+	}
+
 	warehouseService := service.NewWarehouseService(warehouseUsecase)
 	grpcServer := server.NewGRPCServer(bootstrap, warehouseService)
 	app := newApp(logger, grpcServer)
 	return app, func() {
+		consumerCleanup()
 		cleanup2()
 		cleanup()
 	}, nil
