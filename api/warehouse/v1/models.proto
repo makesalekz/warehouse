@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package warehouse.v1;
+
+option go_package = "gitlab.calendaria.team/services/warehouse/api/warehouse/v1;warehouse_v1";
+
+message Warehouse {
+  int64 id = 1;
+  int64 tenant_id = 2;
+  string name = 3;
+  string type = 4;
+  string description = 5;
+  string address = 6;
+  bool is_active = 7;
+  string created_at = 8;
+  string updated_at = 9;
+  optional int64 store_id = 10;
+}
+
+message StockItem {
+  int64 id = 1;
+  int64 tenant_id = 2;
+  int64 warehouse_id = 3;
+  int64 product_id = 4;
+  string quantity = 5;
+  string min_quantity = 6;
+  string updated_at = 7;
+}
+
+message StockMovement {
+  int64 id = 1;
+  int64 tenant_id = 2;
+  int64 warehouse_id = 3;
+  string type = 4;
+  int64 product_id = 5;
+  string quantity = 6;
+  optional int64 counterparty_id = 7;
+  optional string reason = 8;
+  int64 created_by = 9;
+  string created_at = 10;
+}
+
+message Inventory {
+  int64 id = 1;
+  int64 tenant_id = 2;
+  int64 warehouse_id = 3;
+  string status = 4;
+  int64 created_by = 5;
+  string created_at = 6;
+  optional string completed_at = 7;
+  repeated InventoryItem items = 8;
+}
+
+message InventoryItem {
+  int64 id = 1;
+  int64 inventory_id = 2;
+  int64 product_id = 3;
+  string expected_qty = 4;
+  optional string actual_qty = 5;
+  optional string difference = 6;
+}

@@ -1,0 +1,220 @@
+syntax = "proto3";
+
+package warehouse.v1;
+
+option go_package = "gitlab.calendaria.team/services/warehouse/api/warehouse/v1;warehouse_v1";
+
+import "api/warehouse/v1/models.proto";
+import "api/utils/v1/models.proto";
+
+service WarehouseService {
+  rpc CreateWarehouse(CreateWarehouseRequest) returns (CreateWarehouseReply);
+  rpc GetWarehouse(GetWarehouseRequest) returns (GetWarehouseReply);
+  rpc ListWarehouses(ListWarehousesRequest) returns (ListWarehousesReply);
+  rpc UpdateWarehouse(UpdateWarehouseRequest) returns (UpdateWarehouseReply);
+  rpc DeleteWarehouse(DeleteWarehouseRequest) returns (DeleteWarehouseReply);
+  rpc GetStockItems(GetStockItemsRequest) returns (GetStockItemsReply);
+  rpc GetStockByProduct(GetStockByProductRequest) returns (GetStockByProductReply);
+  rpc CreateReceipt(CreateReceiptRequest) returns (CreateReceiptReply);
+  rpc CreateTransfer(CreateTransferRequest) returns (CreateTransferReply);
+  rpc CreateWriteOff(CreateWriteOffRequest) returns (CreateWriteOffReply);
+  rpc CreateGift(CreateGiftRequest) returns (CreateGiftReply);
+  rpc ListMovements(ListMovementsRequest) returns (ListMovementsReply);
+  rpc SetMinQuantity(SetMinQuantityRequest) returns (SetMinQuantityReply);
+  rpc GetLowStockItems(GetLowStockItemsRequest) returns (GetLowStockItemsReply);
+  rpc StartInventory(StartInventoryRequest) returns (StartInventoryReply);
+  rpc SetInventoryItem(SetInventoryItemRequest) returns (SetInventoryItemReply);
+  rpc CompleteInventory(CompleteInventoryRequest) returns (CompleteInventoryReply);
+  rpc GetInventory(GetInventoryRequest) returns (GetInventoryReply);
+}
+
+message CreateWarehouseRequest {
+  string name = 1;
+  string type = 2;
+  string description = 3;
+  string address = 4;
+  optional int64 store_id = 5;
+}
+
+message CreateWarehouseReply {
+  Warehouse warehouse = 1;
+}
+
+message GetWarehouseRequest {
+  int64 id = 1;
+}
+
+message GetWarehouseReply {
+  Warehouse warehouse = 1;
+}
+
+message ListWarehousesRequest {
+  utils.v1.PaginateRequest paginate = 1;
+  optional int64 store_id = 2;
+}
+
+message ListWarehousesReply {
+  repeated Warehouse items = 1;
+  utils.v1.PaginateReply paginate = 2;
+}
+
+message UpdateWarehouseRequest {
+  int64 id = 1;
+  string name = 2;
+  string type = 3;
+  string description = 4;
+  string address = 5;
+  bool is_active = 6;
+  optional int64 store_id = 7;
+}
+
+message UpdateWarehouseReply {
+  Warehouse warehouse = 1;
+}
+
+message DeleteWarehouseRequest {
+  int64 id = 1;
+}
+
+message DeleteWarehouseReply {}
+
+message GetStockItemsRequest {
+  int64 warehouse_id = 1;
+  utils.v1.PaginateRequest paginate = 2;
+}
+
+message GetStockItemsReply {
+  repeated StockItem items = 1;
+  utils.v1.PaginateReply paginate = 2;
+}
+
+message GetStockByProductRequest {
+  int64 product_id = 1;
+}
+
+message GetStockByProductReply {
+  repeated StockItem items = 1;
+}
+
+message ReceiptItem {
+  int64 product_id = 1;
+  string quantity = 2;
+}
+
+message CreateReceiptRequest {
+  int64 warehouse_id = 1;
+  repeated ReceiptItem items = 2;
+  optional int64 counterparty_id = 3;
+}
+
+message CreateReceiptReply {
+  repeated StockMovement movements = 1;
+}
+
+message TransferItem {
+  int64 product_id = 1;
+  string quantity = 2;
+}
+
+message CreateTransferRequest {
+  int64 source_warehouse_id = 1;
+  int64 target_warehouse_id = 2;
+  repeated TransferItem items = 3;
+}
+
+message CreateTransferReply {
+  repeated StockMovement movements = 1;
+}
+
+message WriteOffItem {
+  int64 product_id = 1;
+  string quantity = 2;
+  string reason = 3;
+}
+
+message CreateWriteOffRequest {
+  int64 warehouse_id = 1;
+  repeated WriteOffItem items = 2;
+}
+
+message CreateWriteOffReply {
+  repeated StockMovement movements = 1;
+}
+
+message GiftItem {
+  int64 product_id = 1;
+  string quantity = 2;
+}
+
+message CreateGiftRequest {
+  int64 warehouse_id = 1;
+  repeated GiftItem items = 2;
+  int64 counterparty_id = 3;
+}
+
+message CreateGiftReply {
+  repeated StockMovement movements = 1;
+}
+
+message ListMovementsRequest {
+  int64 warehouse_id = 1;
+  optional string type = 2;
+  utils.v1.PaginateRequest paginate = 3;
+}
+
+message ListMovementsReply {
+  repeated StockMovement items = 1;
+  utils.v1.PaginateReply paginate = 2;
+}
+
+message StartInventoryRequest {
+  int64 warehouse_id = 1;
+}
+
+message StartInventoryReply {
+  Inventory inventory = 1;
+}
+
+message SetInventoryItemRequest {
+  int64 inventory_id = 1;
+  int64 product_id = 2;
+  string actual_qty = 3;
+}
+
+message SetInventoryItemReply {
+  InventoryItem item = 1;
+}
+
+message CompleteInventoryRequest {
+  int64 inventory_id = 1;
+}
+
+message CompleteInventoryReply {
+  Inventory inventory = 1;
+}
+
+message GetInventoryRequest {
+  int64 inventory_id = 1;
+}
+
+message GetInventoryReply {
+  Inventory inventory = 1;
+}
+
+message SetMinQuantityRequest {
+  int64 warehouse_id = 1;
+  int64 product_id = 2;
+  string min_quantity = 3;
+}
+
+message SetMinQuantityReply {
+  StockItem item = 1;
+}
+
+message GetLowStockItemsRequest {
+  int64 warehouse_id = 1;
+}
+
+message GetLowStockItemsReply {
+  repeated StockItem items = 1;
+}
