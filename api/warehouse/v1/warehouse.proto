@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package warehouse.v1;
 
-option go_package = "gitlab.calendaria.team/services/warehouse/api/warehouse/v1;warehouse_v1";
+option go_package = "github.com/makesalekz/warehouse/api/warehouse/v1;warehouse_v1";
 
 import "api/warehouse/v1/models.proto";
 import "api/utils/v1/models.proto";

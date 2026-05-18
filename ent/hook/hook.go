@@ -6,7 +6,7 @@ import (
 	"context"
 	"fmt"
 
-	"gitlab.calendaria.team/services/warehouse/ent"
+	"github.com/makesalekz/warehouse/ent"
 )
 
 // The InventoryFunc type is an adapter to allow the use of ordinary

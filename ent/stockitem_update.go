@@ -12,9 +12,9 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
 	"github.com/shopspring/decimal"
-	"gitlab.calendaria.team/services/warehouse/ent/predicate"
-	"gitlab.calendaria.team/services/warehouse/ent/stockitem"
-	"gitlab.calendaria.team/services/warehouse/ent/warehouse"
+	"github.com/makesalekz/warehouse/ent/predicate"
+	"github.com/makesalekz/warehouse/ent/stockitem"
+	"github.com/makesalekz/warehouse/ent/warehouse"
 )
 
 // StockItemUpdate is the builder for updating StockItem entities.

@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitlab.calendaria.team/services/warehouse/ent/inventory"
-	"gitlab.calendaria.team/services/warehouse/ent/predicate"
+	"github.com/makesalekz/warehouse/ent/inventory"
+	"github.com/makesalekz/warehouse/ent/predicate"
 )
 
 // InventoryDelete is the builder for deleting a Inventory entity.

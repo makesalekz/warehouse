@@ -9,9 +9,9 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitlab.calendaria.team/services/warehouse/ent/enum"
-	"gitlab.calendaria.team/services/warehouse/ent/inventory"
-	"gitlab.calendaria.team/services/warehouse/ent/warehouse"
+	"github.com/makesalekz/warehouse/ent/enum"
+	"github.com/makesalekz/warehouse/ent/inventory"
+	"github.com/makesalekz/warehouse/ent/warehouse"
 )
 
 // Inventory is the model entity for the Inventory schema.

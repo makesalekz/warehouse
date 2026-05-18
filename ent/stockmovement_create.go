@@ -12,9 +12,9 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
 	"github.com/shopspring/decimal"
-	"gitlab.calendaria.team/services/warehouse/ent/enum"
-	"gitlab.calendaria.team/services/warehouse/ent/stockmovement"
-	"gitlab.calendaria.team/services/warehouse/ent/warehouse"
+	"github.com/makesalekz/warehouse/ent/enum"
+	"github.com/makesalekz/warehouse/ent/stockmovement"
+	"github.com/makesalekz/warehouse/ent/warehouse"
 )
 
 // StockMovementCreate is the builder for creating a StockMovement entity.

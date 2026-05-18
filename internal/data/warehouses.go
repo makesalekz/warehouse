@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	"gitlab.calendaria.team/services/warehouse/ent"
-	"gitlab.calendaria.team/services/warehouse/ent/enum"
-	"gitlab.calendaria.team/services/warehouse/ent/warehouse"
-	utils_v1 "gitlab.calendaria.team/services/utils/api/utils/v1"
+	"github.com/makesalekz/warehouse/ent"
+	"github.com/makesalekz/warehouse/ent/enum"
+	"github.com/makesalekz/warehouse/ent/warehouse"
+	utils_v1 "github.com/makesalekz/utils/api/utils/v1"
 )
 
 type WarehousesRepo interface {

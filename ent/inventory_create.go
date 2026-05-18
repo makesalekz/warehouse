@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitlab.calendaria.team/services/warehouse/ent/enum"
-	"gitlab.calendaria.team/services/warehouse/ent/inventory"
-	"gitlab.calendaria.team/services/warehouse/ent/inventoryitem"
-	"gitlab.calendaria.team/services/warehouse/ent/warehouse"
+	"github.com/makesalekz/warehouse/ent/enum"
+	"github.com/makesalekz/warehouse/ent/inventory"
+	"github.com/makesalekz/warehouse/ent/inventoryitem"
+	"github.com/makesalekz/warehouse/ent/warehouse"
 )
 
 // InventoryCreate is the builder for creating a Inventory entity.

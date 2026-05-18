@@ -10,8 +10,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitlab.calendaria.team/services/warehouse/ent/predicate"
-	"gitlab.calendaria.team/services/warehouse/ent/stockmovement"
+	"github.com/makesalekz/warehouse/ent/predicate"
+	"github.com/makesalekz/warehouse/ent/stockmovement"
 )
 
 // StockMovementUpdate is the builder for updating StockMovement entities.

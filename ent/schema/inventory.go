@@ -3,7 +3,7 @@ package schema
 import (
 	"time"
 
-	"gitlab.calendaria.team/services/warehouse/ent/enum"
+	"github.com/makesalekz/warehouse/ent/enum"
 
 	"entgo.io/ent"
 	"entgo.io/ent/schema/edge"

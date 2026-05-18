@@ -7,13 +7,13 @@ import (
 	"fmt"
 
 	"entgo.io/ent/dialect/sql"
-	"gitlab.calendaria.team/services/warehouse/ent"
-	"gitlab.calendaria.team/services/warehouse/ent/inventory"
-	"gitlab.calendaria.team/services/warehouse/ent/inventoryitem"
-	"gitlab.calendaria.team/services/warehouse/ent/predicate"
-	"gitlab.calendaria.team/services/warehouse/ent/stockitem"
-	"gitlab.calendaria.team/services/warehouse/ent/stockmovement"
-	"gitlab.calendaria.team/services/warehouse/ent/warehouse"
+	"github.com/makesalekz/warehouse/ent"
+	"github.com/makesalekz/warehouse/ent/inventory"
+	"github.com/makesalekz/warehouse/ent/inventoryitem"
+	"github.com/makesalekz/warehouse/ent/predicate"
+	"github.com/makesalekz/warehouse/ent/stockitem"
+	"github.com/makesalekz/warehouse/ent/stockmovement"
+	"github.com/makesalekz/warehouse/ent/warehouse"
 )
 
 // The Query interface represents an operation that queries a graph.

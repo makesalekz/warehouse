@@ -9,8 +9,8 @@ import (
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
 	"github.com/shopspring/decimal"
-	"gitlab.calendaria.team/services/warehouse/ent/inventory"
-	"gitlab.calendaria.team/services/warehouse/ent/inventoryitem"
+	"github.com/makesalekz/warehouse/ent/inventory"
+	"github.com/makesalekz/warehouse/ent/inventoryitem"
 )
 
 // InventoryItem is the model entity for the InventoryItem schema.

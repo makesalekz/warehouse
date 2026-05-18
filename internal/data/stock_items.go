@@ -5,9 +5,9 @@ import (
 
 	"entgo.io/ent/dialect/sql"
 	"github.com/shopspring/decimal"
-	"gitlab.calendaria.team/services/warehouse/ent"
-	"gitlab.calendaria.team/services/warehouse/ent/stockitem"
-	utils_v1 "gitlab.calendaria.team/services/utils/api/utils/v1"
+	"github.com/makesalekz/warehouse/ent"
+	"github.com/makesalekz/warehouse/ent/stockitem"
+	utils_v1 "github.com/makesalekz/utils/api/utils/v1"
 )
 
 type StockItemsRepo interface {

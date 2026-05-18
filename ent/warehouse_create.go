@@ -11,11 +11,11 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitlab.calendaria.team/services/warehouse/ent/enum"
-	"gitlab.calendaria.team/services/warehouse/ent/inventory"
-	"gitlab.calendaria.team/services/warehouse/ent/stockitem"
-	"gitlab.calendaria.team/services/warehouse/ent/stockmovement"
-	"gitlab.calendaria.team/services/warehouse/ent/warehouse"
+	"github.com/makesalekz/warehouse/ent/enum"
+	"github.com/makesalekz/warehouse/ent/inventory"
+	"github.com/makesalekz/warehouse/ent/stockitem"
+	"github.com/makesalekz/warehouse/ent/stockmovement"
+	"github.com/makesalekz/warehouse/ent/warehouse"
 )
 
 // WarehouseCreate is the builder for creating a Warehouse entity.

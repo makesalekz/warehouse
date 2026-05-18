@@ -12,11 +12,11 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitlab.calendaria.team/services/warehouse/ent/inventory"
-	"gitlab.calendaria.team/services/warehouse/ent/predicate"
-	"gitlab.calendaria.team/services/warehouse/ent/stockitem"
-	"gitlab.calendaria.team/services/warehouse/ent/stockmovement"
-	"gitlab.calendaria.team/services/warehouse/ent/warehouse"
+	"github.com/makesalekz/warehouse/ent/inventory"
+	"github.com/makesalekz/warehouse/ent/predicate"
+	"github.com/makesalekz/warehouse/ent/stockitem"
+	"github.com/makesalekz/warehouse/ent/stockmovement"
+	"github.com/makesalekz/warehouse/ent/warehouse"
 )
 
 // WarehouseQuery is the builder for querying Warehouse entities.

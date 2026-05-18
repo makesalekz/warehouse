@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"time"
 
-	"gitlab.calendaria.team/services/warehouse/ent"
-	"gitlab.calendaria.team/services/warehouse/ent/enum"
-	"gitlab.calendaria.team/services/warehouse/ent/inventory"
-	"gitlab.calendaria.team/services/warehouse/ent/inventoryitem"
-	"gitlab.calendaria.team/services/warehouse/ent/stockitem"
+	"github.com/makesalekz/warehouse/ent"
+	"github.com/makesalekz/warehouse/ent/enum"
+	"github.com/makesalekz/warehouse/ent/inventory"
+	"github.com/makesalekz/warehouse/ent/inventoryitem"
+	"github.com/makesalekz/warehouse/ent/stockitem"
 
 	"github.com/shopspring/decimal"
 )

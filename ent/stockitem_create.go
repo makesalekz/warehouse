@@ -12,8 +12,8 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
 	"github.com/shopspring/decimal"
-	"gitlab.calendaria.team/services/warehouse/ent/stockitem"
-	"gitlab.calendaria.team/services/warehouse/ent/warehouse"
+	"github.com/makesalekz/warehouse/ent/stockitem"
+	"github.com/makesalekz/warehouse/ent/warehouse"
 )
 
 // StockItemCreate is the builder for creating a StockItem entity.

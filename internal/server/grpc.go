@@ -1,9 +1,9 @@
 package server
 
 import (
-	v1 "gitlab.calendaria.team/services/warehouse/api/warehouse/v1"
-	"gitlab.calendaria.team/services/warehouse/internal/conf"
-	"gitlab.calendaria.team/services/warehouse/internal/service"
+	v1 "github.com/makesalekz/warehouse/api/warehouse/v1"
+	"github.com/makesalekz/warehouse/internal/conf"
+	"github.com/makesalekz/warehouse/internal/service"
 
 	"github.com/go-kratos/kratos/v2/middleware/metadata"
 	"github.com/go-kratos/kratos/v2/middleware/recovery"

@@ -4,8 +4,8 @@ import (
 	"context"
 	"encoding/json"
 
-	"gitlab.calendaria.team/services/warehouse/internal/data"
-	"gitlab.calendaria.team/services/warehouse/messages"
+	"github.com/makesalekz/warehouse/internal/data"
+	"github.com/makesalekz/warehouse/messages"
 
 	"github.com/go-kratos/kratos/v2/log"
 	nats "github.com/nats-io/nats.go"

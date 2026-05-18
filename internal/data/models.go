@@ -3,7 +3,7 @@ package data
 import (
 	"github.com/shopspring/decimal"
 
-	"gitlab.calendaria.team/services/warehouse/ent/enum"
+	"github.com/makesalekz/warehouse/ent/enum"
 )
 
 type WarehouseDto struct {

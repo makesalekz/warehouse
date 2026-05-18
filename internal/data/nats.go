@@ -2,7 +2,7 @@ package data
 
 import (
 	nats "github.com/nats-io/nats.go"
-	"gitlab.calendaria.team/services/warehouse/internal/conf"
+	"github.com/makesalekz/warehouse/internal/conf"
 )
 
 func NewNatsClient(conf *conf.Bootstrap) (*nats.Conn, func(), error) {

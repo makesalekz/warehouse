@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"testing"
 
-	"gitlab.calendaria.team/services/warehouse/ent"
-	"gitlab.calendaria.team/services/warehouse/ent/enum"
-	"gitlab.calendaria.team/services/warehouse/internal/data"
-	"gitlab.calendaria.team/services/warehouse/messages"
-	utils_v1 "gitlab.calendaria.team/services/utils/api/utils/v1"
+	"github.com/makesalekz/warehouse/ent"
+	"github.com/makesalekz/warehouse/ent/enum"
+	"github.com/makesalekz/warehouse/internal/data"
+	"github.com/makesalekz/warehouse/messages"
+	utils_v1 "github.com/makesalekz/utils/api/utils/v1"
 
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/shopspring/decimal"
