@@ -600,7 +600,7 @@ const file_api_warehouse_v1_models_proto_rawDesc = "" +
 	"difference\x18\x06 \x01(\tH\x01R\n" +
 	"difference\x88\x01\x01B\r\n" +
 	"\v_actual_qtyB\r\n" +
-	"\v_differenceBIZGgithub.com/makesalekz/warehouse/api/warehouse/v1;warehouse_v1b\x06proto3"
+	"\v_differenceB?Z=github.com/makesalekz/warehouse/api/warehouse/v1;warehouse_v1b\x06proto3"
 
 var (
 	file_api_warehouse_v1_models_proto_rawDescOnce sync.Once

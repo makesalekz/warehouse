@@ -2187,7 +2187,7 @@ const file_api_warehouse_v1_warehouse_proto_rawDesc = "" +
 	"\x0eStartInventory\x12#.warehouse.v1.StartInventoryRequest\x1a!.warehouse.v1.StartInventoryReply\x12^\n" +
 	"\x10SetInventoryItem\x12%.warehouse.v1.SetInventoryItemRequest\x1a#.warehouse.v1.SetInventoryItemReply\x12a\n" +
 	"\x11CompleteInventory\x12&.warehouse.v1.CompleteInventoryRequest\x1a$.warehouse.v1.CompleteInventoryReply\x12R\n" +
-	"\fGetInventory\x12!.warehouse.v1.GetInventoryRequest\x1a\x1f.warehouse.v1.GetInventoryReplyBIZGgithub.com/makesalekz/warehouse/api/warehouse/v1;warehouse_v1b\x06proto3"
+	"\fGetInventory\x12!.warehouse.v1.GetInventoryRequest\x1a\x1f.warehouse.v1.GetInventoryReplyB?Z=github.com/makesalekz/warehouse/api/warehouse/v1;warehouse_v1b\x06proto3"
 
 var (
 	file_api_warehouse_v1_warehouse_proto_rawDescOnce sync.Once
